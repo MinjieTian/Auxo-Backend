@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Tian Minjie\\Desktop\\Auxo-Backend\\Auxo-Backend\\Auxo-Backend.csproj": {}
+    "c:\\Users\\Tian Minjie\\Desktop\\Auxo-Backend\\Auxo-Backend\\Auxo-Backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Tian Minjie\\Desktop\\Auxo-Backend\\Auxo-Backend\\Auxo-Backend.csproj": {
+    "c:\\Users\\Tian Minjie\\Desktop\\Auxo-Backend\\Auxo-Backend\\Auxo-Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Tian Minjie\\Desktop\\Auxo-Backend\\Auxo-Backend\\Auxo-Backend.csproj",
+        "projectUniqueName": "c:\\Users\\Tian Minjie\\Desktop\\Auxo-Backend\\Auxo-Backend\\Auxo-Backend.csproj",
         "projectName": "Auxo-Backend",
-        "projectPath": "C:\\Users\\Tian Minjie\\Desktop\\Auxo-Backend\\Auxo-Backend\\Auxo-Backend.csproj",
+        "projectPath": "c:\\Users\\Tian Minjie\\Desktop\\Auxo-Backend\\Auxo-Backend\\Auxo-Backend.csproj",
         "packagesPath": "C:\\Users\\Tian Minjie\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Tian Minjie\\Desktop\\Auxo-Backend\\Auxo-Backend\\obj\\",
+        "outputPath": "c:\\Users\\Tian Minjie\\Desktop\\Auxo-Backend\\Auxo-Backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Tian Minjie\\AppData\\Roaming\\NuGet\\NuGet.Config",
