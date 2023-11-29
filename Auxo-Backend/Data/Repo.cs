@@ -20,7 +20,10 @@ public class Repo : IRepo
 
     public async Task<IEnumerable<Parts>> AddPart(PartsDto dto)
     {
-        Parts.Add(new Parts { Id = Parts.Count + 1, Description = dto.Description, Price = dto.Price, Quantity = dto.Quantity });
+        var part = Parts.FirstOrDefault(e => e.Description == dto.Description && e.Price == dto.Price );
+        if ( part == null) {
+            Parts.Add(new Parts { Id = Parts.Count + 1, Description = dto.Description, Price = dto.Price, Quantity = dto.Quantity });
+        } else { part.Quantity += dto.Quantity; }
         return Parts;
     }
 
