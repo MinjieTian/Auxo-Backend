@@ -32,7 +32,7 @@ public class PartsController : ControllerBase
         }
         catch (Exception err)
         {
-            return BadRequest(err);
+            return BadRequest(err.Message);
         }
         finally
         {
@@ -52,7 +52,7 @@ public class PartsController : ControllerBase
         }
         catch (Exception err)
         {
-            return BadRequest(err);
+            return BadRequest(err.Message);
         }
         finally
         {

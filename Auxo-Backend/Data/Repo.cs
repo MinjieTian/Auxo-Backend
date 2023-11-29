@@ -24,32 +24,30 @@ public class Repo : IRepo
         return Parts;
     }
 
+    // I am trying to find a better way for this function, I want to check all selected parts are with valid number first. It is not a clear way, 
+    // cause there are some duplicate codes here. I will improve it.
     public async Task<OrderResult> PlaceOrder(OrderDto orderDto)
     {
-        OrderResult resultObj = new();
+        OrderResult resultObj = new() { TotalPrice = 0.0, Items = new List<ItemInOrder>() };
         foreach (var item in orderDto.SelectedParts)
         {
             var part = Parts.FirstOrDefault(p => p.Id == item.Id);
-            if (!IsValidPart(item, part, out string errorMessage))
-            {
-                resultObj.errMessage = errorMessage;
-                return resultObj;
-            }
-            else
-            {
-                part.Quantity -= item.Quantity;
-                if (resultObj.SelectedPartsRes == null) { resultObj.SelectedPartsRes = new List<SelectedPart> { new() { Id = item.Id, Quantity = item.Quantity } }; }
-                else
-                {
-                    resultObj.SelectedPartsRes.Add(new SelectedPart { Id = item.Id, Quantity = item.Quantity });
-                }
-            }
+            if (!IsValidPart(item, part, out string errorMessage)) { throw new Exception(errorMessage); }
+        }
+        foreach (var item in orderDto.SelectedParts)
+        {
+            var part = Parts.FirstOrDefault(p => p.Id == item.Id);
+            part.Quantity -= item.Quantity;
+            double priceForThisPart = item.Quantity * part.Price;
+            resultObj.TotalPrice += priceForThisPart;
+            resultObj.Items.Add(new ItemInOrder { Quantity = item.Quantity, Description = part.Description, Price = priceForThisPart });
         }
 
+        // return resultObj;
         return resultObj;
     }
 
-    private bool IsValidPart(SelectedPart item, Parts? part, out string errorMessage)
+    private static bool IsValidPart(SelectedPart item, Parts? part, out string errorMessage)
     {
         errorMessage = string.Empty;
         if (part == null || part.Quantity < item.Quantity)
@@ -64,6 +62,13 @@ public class Repo : IRepo
 
 public class OrderResult
 {
-    public List<SelectedPart>? SelectedPartsRes { get; set; }
-    public string? errMessage { get; set; }
+    public double TotalPrice { get; set; }
+    public List<ItemInOrder>? Items { get; set; }
+}
+
+public class ItemInOrder
+{
+    public required string Description { get; set; }
+    public int Quantity { get; set; }
+    public double Price { get; set; }
 }

@@ -29,7 +29,7 @@ public class OrdersController : ControllerBase
         }
         catch (Exception err)
         {
-            return BadRequest(err);
+            return BadRequest(err.Message);
         }
         finally
         {
